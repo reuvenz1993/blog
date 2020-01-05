@@ -26,29 +26,28 @@
 <body>
 
 
-<div id='frame' class="container">
+<div id='login' class="container">
 <div class="row">
 <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
-
     <div class="card">
         <article class="card-body">
-            <a href="" class="float-right btn btn-outline-primary">Sign up</a>
+            <button id='lg' class="float-right btn btn-outline-primary">Sign up</button>
             <h4 class="card-title mb-4 mt-1">Sign in</h4>
-            <form>
+            <form method='POST'>
                 <div class="form-group">
-                    <label>Your email</label>
-                    <input name="" class="form-control" placeholder="Email" type="email">
+                    <label>Username</label>
+                    {{loginform.username(class_='form-control' , placeholder='Username' , required=true)}}
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <a class="float-right" href="#">Forgot?</a>
                     <label>Your password</label>
-                    <input class="form-control" placeholder="******" type="password">
-                </div> <!-- form-group// --> 
-                <div class="form-group"> 
+                    {{loginform.password(class_='form-control' , placeholder='password' , type="password" , required=true )}}
+                </div> <!-- form-group// -->
+                <div class="form-group">
                     <div class="checkbox">
-                    <label> <input type="checkbox"> Save password </label>
+                    <label> <input type="checkbox"> Remember me </label>
                     </div> <!-- checkbox .// -->
-                </div> <!-- form-group// -->  
+                </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Login  </button>
                 </div> <!-- form-group// -->
@@ -59,6 +58,42 @@
 </div> <!-- col.// -->
 </div>
 </div>
+
+<div id='signup' class="container">
+    <div class="row">
+    <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
+        <div class="card">
+            <article class="card-body">
+                <button id='lo' class="float-right btn btn-outline-primary">Sign in</button>
+                <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                <form>
+                    <div class="form-group">
+                        <label>Your email</label>
+                        <input name="" class="form-control" placeholder="Email" type="email">
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <a class="float-right" href="#">Forgot?</a>
+                        <label>Your password</label>
+                        <input class="form-control" placeholder="******" type="password">
+                    </div> <!-- form-group// --> 
+                    <div class="form-group"> 
+                        <div class="checkbox">
+                        <label> <input type="checkbox"> Save password </label>
+                        </div> <!-- checkbox .// -->
+                    </div> <!-- form-group// -->  
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </article>
+        </div> <!-- card.// -->
+    
+    </div> <!-- col.// -->
+    </div>
+    </div>
+
+
+
 </body>
 
       <script type="text/javascript" src="{{url_for('static',filename='js/index.js')}}" ></script>

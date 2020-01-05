@@ -1,4 +1,8 @@
-#frame {
-    padding-top: 10% ;
-    max-height: 100vh;
+#login {
+    margin-top: 10% ;
+}
+
+#signup {
+    margin-top: 10% ;
+    display: none;
 }
