@@ -10,8 +10,9 @@ def index():
     loginform = LoginForm()
     signupform = SignupForm()
     if loginform.validate_on_submit():
-        login_user = User.query.filter_by(username=loginform.email.data).first()
+        login_user = User.query.filter_by(username=loginform.username.data).first()
         if login_user.check_password(loginform.password.data) and login_user is not None:
+            print (login_user)
             login_user(login_user)
             redirect(url_for('home'))
 
@@ -21,6 +22,8 @@ def index():
         password=signupform.password.data)
         db.session.add(signup_user)
         db.session.commit()
+    print ('hbmm')
+
 
     return render_template('index.html' , loginform = loginform , signupform = signupform )
 
