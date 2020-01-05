@@ -49,7 +49,7 @@
                     </div> <!-- checkbox .// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                    {{loginform.submit(class_="btn btn-primary btn-block")}}
                 </div> <!-- form-group// -->
             </form>
         </article>
@@ -65,24 +65,22 @@
         <div class="card">
             <article class="card-body">
                 <button id='lo' class="float-right btn btn-outline-primary">Sign in</button>
-                <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                <h4 class="card-title mb-4 mt-1">Signup</h4>
                 <form>
                     <div class="form-group">
-                        <label>Your email</label>
-                        <input name="" class="form-control" placeholder="Email" type="email">
+                        <label>Email</label>
+                        {{signupform.email(class_='form-control' , placeholder='Email' , required=true)}}
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <a class="float-right" href="#">Forgot?</a>
-                        <label>Your password</label>
-                        <input class="form-control" placeholder="******" type="password">
-                    </div> <!-- form-group// --> 
-                    <div class="form-group"> 
-                        <div class="checkbox">
-                        <label> <input type="checkbox"> Save password </label>
-                        </div> <!-- checkbox .// -->
-                    </div> <!-- form-group// -->  
+                        <label>Username</label>
+                        {{signupform.username(class_='form-control' , placeholder='Username' , required=true)}}
+                    </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                        <label>Password</label>
+                        {{signupform.password(class_='form-control' , placeholder='Password' , required=true)}}
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        {{signupform.submit(class_="btn btn-primary btn-block")}}
                     </div> <!-- form-group// -->
                 </form>
             </article>
