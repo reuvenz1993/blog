@@ -21,9 +21,10 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key = True)
-    email = db.Column(db.String(64), unique=True, index=True)
-    username = db.Column(db.String(64), unique=True, index=True)
-    password_hash = db.Column(db.String(128))
+    email = db.Column(db.String(64), unique=True , nullable=False)
+    username = db.Column(db.String(64), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    photo = db.Column(db.String(64), default='default.jpg')
 
     def __init__(self, email, username, password):
         self.username = username
@@ -33,3 +34,9 @@ class User(db.Model, UserMixin):
     def check_password(self,password):
         # https://stackoverflow.com/questions/23432478/flask-generate-password-hash-not-constant-output
         return check_password_hash(self.password_hash,password)
+
+    def __repr__(self):
+        return f'username : {self.username} , email : {self.email} , password : {self.password_hash} ,photo = {self.photo}  '
+    
+    def update_photo(self,photo):
+        self.photo = photo
