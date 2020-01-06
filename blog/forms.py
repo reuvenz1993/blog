@@ -4,6 +4,7 @@ from wtforms import (IntegerField, PasswordField, StringField, SubmitField,
                      ValidationError)
 from wtforms.validators import DataRequired, Email, EqualTo
 from blog.models import User
+from blog import db
 
 
 class SignupForm(FlaskForm):

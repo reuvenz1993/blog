@@ -47,6 +47,8 @@ def register():
         if signupform.check_email_and_username():
             print ('signup details ok')
             return redirect(url_for('home'))
+    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error )
+
 
 
 if __name__ == '__main__':
