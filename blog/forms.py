@@ -9,7 +9,7 @@ class SignupForm(FlaskForm):
     email = StringField('Enter your email : ' , validators=[DataRequired() ,Email() ])
     username = StringField('Enter Username : ' , validators=[DataRequired()] )
     password = PasswordField('Enter Password: ',validators=[DataRequired()] )
-    submit = SubmitField("Sign up")
+    signup = SubmitField("Sign up")
 
     def check_email(self, field):
         if User.query.filter_by(email=field.data).first():
@@ -23,4 +23,4 @@ class SignupForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField('Enter Username : ' , validators=[DataRequired()] )
     password = PasswordField('Enter Password: ', validators=[DataRequired()] )
-    submit = SubmitField("Log in")
+    login = SubmitField("Log in")
