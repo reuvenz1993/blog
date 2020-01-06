@@ -7,4 +7,10 @@
 <p>Please login or register!</p>
 {% endif %}
 
+add new post :
+
+{{ addpost_form.hidden_tag() }}
+{{ addpost_form.post.label }}
+{{ addpost_form.post() }}
+
 {% endblock %}

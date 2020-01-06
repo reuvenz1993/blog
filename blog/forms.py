@@ -1,6 +1,6 @@
 from flask_dance.utils import first
 from flask_wtf import FlaskForm
-from wtforms import (IntegerField, PasswordField, StringField, SubmitField, BooleanField ,
+from wtforms import (IntegerField, PasswordField, StringField, SubmitField, BooleanField ,TextAreaField
                      ValidationError)
 from wtforms.validators import DataRequired, Email, EqualTo
 from blog.models import User
@@ -28,3 +28,7 @@ class LoginForm(FlaskForm):
     def reset(self):
         self.username.data = ""
         self.password.data = ""
+
+class AddPost(FlaskForm):
+    post = TextAreaField('Enter Username : ' , validators=[DataRequired()] )
+    addpost = SubmitField("Add Post")

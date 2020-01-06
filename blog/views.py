@@ -1,7 +1,7 @@
 from blog import app,db
 from flask import render_template, redirect, request, url_for, flash,abort
 from flask_login import login_user,login_required,logout_user
-from blog.forms import LoginForm , SignupForm
+from blog.forms import LoginForm , SignupForm, AddPost
 from blog.models import User
 
 @app.route('/', methods=['GET', 'POST'])
@@ -47,7 +47,8 @@ def index():
 @app.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
-    return render_template('home.html')
+    addpost_form= AddPost()
+    return render_template('home.html' , addpost_form=addpost_form)
 
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
