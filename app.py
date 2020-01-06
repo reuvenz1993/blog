@@ -43,10 +43,15 @@ def register():
     signupform = SignupForm()
     error = ''
     msg = False
-    if signupform.signup.data and signupform.validate_on_submit():
-        if signupform.check_email_and_username():
-            print ('signup details ok')
-            return redirect(url_for('home'))
+    register_user = User(email=signupform.email.data,
+                    username=signupform.username.data,
+                    password=signupform.password.data)
+    db.session.add(register_user)
+    try:
+        db.session.commit()
+    except:
+        db.session.rollback()
+        error = 'register failed'
     return render_template('index.html' , loginform = loginform , signupform = signupform , error = error )
 
 
