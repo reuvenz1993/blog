@@ -13,6 +13,7 @@ def index():
 
     return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg=msg )
 
+@login_required
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
@@ -29,7 +30,8 @@ def login():
         logged_in_user = User.query.filter_by(username=loginform.username.data).first()
         if ( logged_in_user is not None and logged_in_user.check_password(loginform.password.data) ) :
             print (logged_in_user)
-            login_user(logged_in_user)
+            to_remember = loginform.remember.data
+            login_user(logged_in_user , remember = to_remember)
             return redirect(url_for('home'))
         else:
             error = 'Invalid username or password'
