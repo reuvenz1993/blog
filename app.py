@@ -9,24 +9,30 @@ from blog.models import User
 def index():
     loginform = LoginForm()
     signupform = SignupForm()
-    if loginform.validate_on_submit():
-        login_user = User.query.filter_by(username=loginform.username.data).first()
-        if login_user.check_password(loginform.password.data) and login_user is not None:
-            print (login_user)
-            login_user(login_user)
-            redirect(url_for('home'))
+    if loginform.login.data and loginform.validate_on_submit():
+        logged_in_user = User.query.filter_by(username=loginform.username.data).first()
+        if ( logged_in_user is not None and logged_in_user.check_password(loginform.password.data) ) :
+            print (logged_in_user)
+            login_user(logged_in_user)
+            return redirect(url_for('home'))
+        else:
+            error = 'Invalid username or password'
+            return render_template('index.html', error = error)
 
-    if signupform.validate_on_submit():
+    if signupform.signup.data and signupform.validate_on_submit():
         signup_user = User(email=signupform.email.data,
         username=signupform.username.data,
         password=signupform.password.data)
         db.session.add(signup_user)
         db.session.commit()
+
     print ('hbmm')
-
-
     return render_template('index.html' , loginform = loginform , signupform = signupform )
 
+
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
 
 
 if __name__ == '__main__':

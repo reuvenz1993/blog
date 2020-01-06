@@ -14,7 +14,6 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
       <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
       <!-- Bootstrap CSS -->
-  
 
   <title>Reuvez-website</title>
 </head>
@@ -25,6 +24,9 @@
 </head>
 <body>
 
+    {% if error %}
+    <div>{{error}} </div>
+    {% endif %}
 
 <div id='login' class="container">
 <div class="row">
