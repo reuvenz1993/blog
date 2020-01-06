@@ -1,6 +1,7 @@
 from blog import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 # By inheriting the UserMixin we get access to a lot of built-in attributes
 # which we will be able to call in our views!
 # is_authenticated()
@@ -49,6 +50,21 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'username : {self.username} , email : {self.email} , password : {self.password_hash} ,photo = {self.photo}  '
-    
+
     def update_photo(self,photo):
         self.photo = photo
+
+
+class Post(db.Model, UserMixin):
+    # Create a table in the db
+    __tablename__ = 'posts'
+
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(64), nullable=False)
+    post = db.Column(db.String(2048), nullable=False)
+    time = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, username, post):
+        self.username = username
+        self.post = post
+        self.time = datetime.utcnow

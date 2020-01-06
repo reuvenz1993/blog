@@ -21,4 +21,4 @@ Migrate(app,db)
 login_manager.init_app(app)
 
 # Tell users what view to go to when Xthey need to login.
-login_manager.login_view = "login"
+login_manager.login_view = "index"

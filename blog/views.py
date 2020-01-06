@@ -43,7 +43,14 @@ def index():
     signupform.reset()
     return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg=msg )
 
-@login_required
+
 @app.route('/home', methods=['GET', 'POST'])
+@login_required
 def home():
     return render_template('home.html')
+
+@app.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect (url_for('index'))
