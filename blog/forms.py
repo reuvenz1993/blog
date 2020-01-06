@@ -30,6 +30,11 @@ class SignupForm(FlaskForm):
             return False
         else:
             return True
+        
+    def reset(self):
+        self.email.data = ""
+        self.username.data = ""
+        self.password.data = ""
 
 
 
@@ -37,3 +42,7 @@ class LoginForm(FlaskForm):
     username = StringField('Enter Username : ' , validators=[DataRequired()] )
     password = PasswordField('Enter Password: ', validators=[DataRequired()] )
     login = SubmitField("Log in")
+    
+    def reset(self):
+        self.username.data = ""
+        self.password.data = ""

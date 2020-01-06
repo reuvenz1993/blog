@@ -34,9 +34,15 @@ class User(db.Model, UserMixin):
     def check_password(self,password):
         # https://stackoverflow.com/questions/23432478/flask-generate-password-hash-not-constant-output
         return check_password_hash(self.password_hash,password)
-    
+
     def check_if_username_free(self):
         if User.query.filter_by(username=self.username).first() is not None:
+            return False
+        else:
+            return True
+
+    def check_if_email_free(self):
+        if User.query.filter_by(email=self.email).first() is not None:
             return False
         else:
             return True

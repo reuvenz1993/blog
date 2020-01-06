@@ -49,13 +49,18 @@ def register():
     db.session.add(register_user)
     try:
         db.session.commit()
+        msg = 'register complete'
     except:
-        
         db.session.rollback()
         error = 'register failed'
-        if not register_user.check_if_username_free :
-            error += 'username exsists'
-    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error )
+        if not register_user.check_if_username_free() :
+            error += '<br> username already exists'
+        if not register_user.check_if_email_free() :
+            error += '<br> email already exists'
+
+    loginform.reset()
+    signupform.reset()
+    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg = msg )
 
 
 
