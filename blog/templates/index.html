@@ -24,13 +24,19 @@
 </head>
 <body>
 
-    {% if error %}
-    <div>{{error}} </div>
-    {% endif %}
+    <div id='info' class="container">
+        <div class="row" style="margin-top: 10%;">
+            <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
+            {% if error %}
+            <div class="alert alert-warning">{{error}} </div>
+            {% endif %}
 
-    {% if msg %}
-    <div>{{msg}} </div>
-    {% endif %}
+            {% if msg %}
+            <div class='alert alert-success'>{{msg}} </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
 
 <div id='login' class="container">
 <div class="row">
