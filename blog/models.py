@@ -67,4 +67,4 @@ class Post(db.Model, UserMixin):
     def __init__(self, username, post):
         self.username = username
         self.post = post
-        self.time = datetime.utcnow
+        self.time = datetime.utcnow()
