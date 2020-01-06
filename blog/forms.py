@@ -1,6 +1,6 @@
 from flask_dance.utils import first
 from flask_wtf import FlaskForm
-from wtforms import (IntegerField, PasswordField, StringField, SubmitField, BooleanField
+from wtforms import (IntegerField, PasswordField, StringField, SubmitField, BooleanField ,
                      ValidationError)
 from wtforms.validators import DataRequired, Email, EqualTo
 from blog.models import User
