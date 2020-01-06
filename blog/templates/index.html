@@ -28,7 +28,12 @@
         <div class="row" style="margin-top: 10%;">
             <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
             {% if error %}
-            <div class="alert alert-warning">{{error}} </div>
+            <div class="alert alert-warning">
+                {% for item in error %}
+                {{item}}
+                <br>
+                {% endfor %}
+            </div>
             {% endif %}
 
             {% if msg %}
@@ -45,7 +50,7 @@
         <article class="card-body">
             <button id='lg' class="float-right btn btn-outline-primary">Sign up</button>
             <h4 class="card-title mb-4 mt-1">Sign in</h4>
-            <form action="{{ url_for('login') }}" method='POST'>
+            <form method='POST'>
                 <div class="form-group">
                     <label>Username</label>
                     {{ loginform.hidden_tag() }}
@@ -79,7 +84,7 @@
             <article class="card-body">
                 <button id='lo' class="float-right btn btn-outline-primary">Sign in</button>
                 <h4 class="card-title mb-4 mt-1">Signup</h4>
-                <form action="{{ url_for('register') }}" method='POST'>
+                <form method='POST'>
                     <div class="form-group">
                         <label>Email</label>
                         {{ signupform.hidden_tag() }}

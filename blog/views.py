@@ -8,29 +8,10 @@ from blog.models import User
 def index():
     loginform = LoginForm()
     signupform = SignupForm()
-    error = ''
+    error = []
     msg = ''
     if loginform.login.data and loginform.validate_on_submit():
         print ("login")
-    if signupform.signup.data and signupform.validate_on_submit():
-        print('signup')
-
-    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg=msg )
-
-@login_required
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    print('login run')
-    loginform = LoginForm()
-    signupform = SignupForm()
-    error = ''
-    msg = False
-    if loginform.login.data and loginform.validate_on_submit():
         logged_in_user = User.query.filter_by(username=loginform.username.data).first()
         if ( logged_in_user is not None and logged_in_user.check_password(loginform.password.data) ) :
             print (logged_in_user)
@@ -38,31 +19,31 @@ def login():
             login_user(logged_in_user , remember = to_remember)
             return redirect(url_for('home'))
         else:
-            error = 'Invalid username or password'
+            error.append('Invalid username or password')
             return render_template('index.html' , loginform = loginform , signupform = signupform , error = error )
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    print('register run')
-    loginform = LoginForm()
-    signupform = SignupForm()
-    error = ''
-    msg = False
-    register_user = User(email=signupform.email.data,
+    if signupform.signup.data and signupform.validate_on_submit():
+        print('signup')
+        register_user = User(email=signupform.email.data,
                     username=signupform.username.data,
                     password=signupform.password.data)
-    db.session.add(register_user)
-    try:
-        db.session.commit()
-        msg = 'register complete'
-    except:
-        db.session.rollback()
-        error = 'register failed'
-        if not register_user.check_if_username_free() :
-            error += '<br> username already exists'
-        if not register_user.check_if_email_free() :
-            error += '<br> email already exists'
+        db.session.add(register_user)
+        try:
+            db.session.commit()
+            msg = 'register complete'
+        except:
+            db.session.rollback()
+            error.append('register failed')
+            if not register_user.check_if_username_free() :
+                error.append('username already exists')
+            if not register_user.check_if_email_free() :
+                error.append('email already exists')
 
     loginform.reset()
     signupform.reset()
-    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg = msg )
+    return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg=msg )
+
+@login_required
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')

@@ -13,11 +13,11 @@ class SignupForm(FlaskForm):
     password = PasswordField('Enter Password: ',validators=[DataRequired()] )
     signup = SubmitField("Sign up")
 
+
     def reset(self):
         self.email.data = ""
         self.username.data = ""
         self.password.data = ""
-
 
 class LoginForm(FlaskForm):
     username = StringField('Enter Username : ' , validators=[DataRequired()] )
