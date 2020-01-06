@@ -36,6 +36,7 @@
             <form method='POST'>
                 <div class="form-group">
                     <label>Username</label>
+                    {{ loginform.hidden_tag() }}
                     {{loginform.username(class_='form-control' , placeholder='Username' , required=true)}}
                 </div> <!-- form-group// -->
                 <div class="form-group">
@@ -66,9 +67,10 @@
             <article class="card-body">
                 <button id='lo' class="float-right btn btn-outline-primary">Sign in</button>
                 <h4 class="card-title mb-4 mt-1">Signup</h4>
-                <form>
+                <form method='POST'>
                     <div class="form-group">
                         <label>Email</label>
+                        {{ signupform.hidden_tag() }}
                         {{signupform.email(class_='form-control' , placeholder='Email' , required=true)}}
                     </div> <!-- form-group// -->
                     <div class="form-group">
