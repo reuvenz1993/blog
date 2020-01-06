@@ -10,6 +10,10 @@ def index():
     signupform = SignupForm()
     error = ''
     msg = ''
+    if loginform.login.data and loginform.validate_on_submit():
+        print ("login")
+    if signupform.signup.data and signupform.validate_on_submit():
+        print('signup')
 
     return render_template('index.html' , loginform = loginform , signupform = signupform , error = error , msg=msg )
 
