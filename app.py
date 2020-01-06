@@ -50,8 +50,11 @@ def register():
     try:
         db.session.commit()
     except:
+        
         db.session.rollback()
         error = 'register failed'
+        if not register_user.check_if_username_free :
+            error += 'username exsists'
     return render_template('index.html' , loginform = loginform , signupform = signupform , error = error )
 
 
