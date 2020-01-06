@@ -48,6 +48,8 @@ def index():
 @login_required
 def home():
     addpost_form= AddPost()
+    if addpost_form.addpost.data:
+        print ('add post')
     return render_template('home.html' , addpost_form=addpost_form)
 
 @app.route('/logout', methods=['GET', 'POST'])
