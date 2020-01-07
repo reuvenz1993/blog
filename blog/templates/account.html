@@ -10,6 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
+            <div>
            <h1> add new post : </h1>
            <form action="" method="post">
                 {{ addpost_form.hidden_tag() }}
@@ -17,14 +18,14 @@
                 <div class="row">{{ addpost_form.post() }}</div>
                 <div class="row"> {{ addpost_form.addpost() }}</div>
             </form>
+            </div>
 
         </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row">
         <div class="col-8 offset-2">
+            <div>
             <form class='form-control'>
                 {{ updateform.hidden_tag() }}
                 <div class="row">Change Email</div>
@@ -32,27 +33,34 @@
                 <div class="row">Change Password</div>
                 <div class="row">{{updateform.password()}}</div>
                 <div class="row">{{updateform.update()}}</div>
-
             </form>
-
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container">
+
     <div class="row">
         <div class="col-8 offset-2">
+            <div>
             {% for post in posts %}
-            {{post}}
-            <br>
+            <div class="row">
+                <div class="card text-left">
+                    <div class="card-body">
+                        <h4 class="card-title">{{post.username}}</h4>
+                        <p class="card-text">{{post.post}}</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
             {% endfor %}
 
         </div>
     </div>
-</div>
 
 
-    </div>
+
 </div>
 
 
