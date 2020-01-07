@@ -50,7 +50,7 @@ def home():
     msg = []
     addpost_form= AddPost()
     if addpost_form.addpost.data:
-        new_post = Post(current_user.username , addpost_form.data['post'])
+        new_post = Post(current_user.id , addpost_form.data['title'], addpost_form.data['post'])
         db.session.add(new_post)
         db.session.commit()
         msg.append('Post added')

@@ -70,8 +70,8 @@ class Post(db.Model, UserMixin):
     time = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id') , nullable=False)
 
-    def __init__(self, username, title , post):
-        self.username = username
+    def __init__(self, user_id, title , post):
+        self.user_id = user_id
         self.title = title
         self.post = post
         self.time = datetime.utcnow()
