@@ -30,6 +30,7 @@ class LoginForm(FlaskForm):
         self.password.data = ""
 
 class AddPost(FlaskForm):
+    title = StringField('Enter Title' , validators=[DataRequired()])
     post = TextAreaField('Enter Username : ' , validators=[DataRequired()] )
     addpost = SubmitField("Add Post")
 

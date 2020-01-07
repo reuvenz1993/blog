@@ -26,6 +26,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     photo = db.Column(db.String(64), default='default.jpg')
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.username = username
@@ -64,12 +65,14 @@ class Post(db.Model, UserMixin):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(64), nullable=False)
-    post = db.Column(db.String(2048), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.String(2048), nullable=False)
     time = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id') , nullable=False)
 
-    def __init__(self, username, post):
+    def __init__(self, username, title , post):
         self.username = username
+        self.title = title
         self.post = post
         self.time = datetime.utcnow()
         

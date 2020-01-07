@@ -13,6 +13,8 @@
            <h1> add new post : </h1>
            <form action="" method="post">
                 {{ addpost_form.hidden_tag() }}
+                <div class="row">{{ addpost_form.title.label }}</div>
+                <div class="row">{{ addpost_form.title() }}</div>
                 <div class="row">{{ addpost_form.post.label }}</div>
                 <div class="row">{{ addpost_form.post() }}</div>
                 <div class="row"> {{ addpost_form.addpost() }}</div>
