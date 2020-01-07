@@ -54,6 +54,10 @@ class User(db.Model, UserMixin):
     def update_photo(self,photo):
         self.photo = photo
 
+        def update(self, email, username):
+            self.email = email
+            self.username = username
+
 
 class Post(db.Model, UserMixin):
     # Create a table in the db

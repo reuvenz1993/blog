@@ -1,6 +1,7 @@
 {
     "python.pythonPath": "c:\\blog\\blog\\envblog\\Scripts\\python.exe",
     "cSpell.words": [
-        "addpost"
+        "addpost",
+        "updateform"
     ]
 }

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<p>Hi {{ current_user.username }}!</p>
+{% else %}
+<p>Please login or register!</p>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+           <h1> add new post : </h1>
+           <form action="" method="post">
+                {{ addpost_form.hidden_tag() }}
+                <div class="row">{{ addpost_form.post.label }}</div>
+                <div class="row">{{ addpost_form.post() }}</div>
+                <div class="row"> {{ addpost_form.addpost() }}</div>
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form class='form-control'>
+                {{ updateform.hidden_tag() }}
+                <div class="row">{{updateform.email()}}</div>
+                <div class="row">{{updateform.password()}}</div>
+                <div class="row">{{updateform.update()}}</div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
