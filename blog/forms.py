@@ -33,7 +33,7 @@ class AddPost(FlaskForm):
     post = TextAreaField('Enter Username : ' , validators=[DataRequired()] )
     addpost = SubmitField("Add Post")
 
-class UpdateForm:
+class UpdateForm(FlaskForm):
     email = StringField('Enter your email : ' , validators=[DataRequired() ,Email() ])
     password = PasswordField('Enter Password: ',validators=[DataRequired()] )
     update = SubmitField("update")

@@ -71,7 +71,7 @@ def logout():
 @login_required
 def user():
     user = User.query.filter_by(username=current_user.username).first_or_404()
-    posts = Post.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(username=current_user.username).all()
     email = user.email
     updateform = UpdateForm()
     addpost_form= AddPost()

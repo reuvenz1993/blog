@@ -72,3 +72,6 @@ class Post(db.Model, UserMixin):
         self.username = username
         self.post = post
         self.time = datetime.utcnow()
+        
+    def __repr__(self):
+        return f'by user : {self.username} , post : {self.post}  '
